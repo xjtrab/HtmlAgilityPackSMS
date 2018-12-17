@@ -8,6 +8,10 @@ using HtmlAgilityPack.CssSelectors.NetCore;
 namespace HtmlAgilityPackSMS.Services{
     public class FangSecondHandService : HostedService
     {
+        public readonly ISMSService sMSService;
+        public FangSecondHandService(ISMSService smsService){
+            this.sMSService = smsService;
+        }
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
             while(!cancellationToken.IsCancellationRequested){
@@ -31,6 +35,8 @@ namespace HtmlAgilityPackSMS.Services{
                     var href = item.QuerySelector("a").Attributes["href"];
                     var id  = href.Value.Split("/")[3];
                     Console.WriteLine("总价 : " + totalPrice + " 面积:" +mianji + " 单价:" + price + " id:" + id );
+                    sMSService.SendByPhone("13961570305","总价:" + totalPrice);
+                    return;
                 }
             }
         }
