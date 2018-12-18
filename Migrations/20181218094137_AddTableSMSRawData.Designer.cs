@@ -3,14 +3,16 @@ using System;
 using HtmlAgilityPackSMS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HtmlAgilityPackSMS.Migrations
 {
     [DbContext(typeof(efContext))]
-    partial class efContextModelSnapshot : ModelSnapshot
+    [Migration("20181218094137_AddTableSMSRawData")]
+    partial class AddTableSMSRawData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
