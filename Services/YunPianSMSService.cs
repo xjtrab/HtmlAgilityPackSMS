@@ -7,6 +7,7 @@ using System.Web;
 public class YunpianSMSService : ISMSService {
     public void SendByPhone(string phone,string strContext){
         // 设置为您的apikey(https://www.yunpian.com)
+#warning todo inject from docker env
         string apikey = "";
         // 发送的手机号
         string mobile = phone;
