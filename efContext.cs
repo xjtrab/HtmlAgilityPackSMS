@@ -26,5 +26,7 @@ namespace HtmlAgilityPackSMS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {}
+
+        public DbSet<Rent> Rents { get; set; }
     }
 }
