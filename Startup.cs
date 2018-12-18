@@ -29,8 +29,8 @@ namespace HtmlAgilityPackSMS
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton<IHostedService, FangSecondHandService>();
             services.AddSingleton<ISMSService,YunpianSMSService>();
+            // services.AddSingleton<IHostedService, FangSecondHandService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

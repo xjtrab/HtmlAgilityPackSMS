@@ -6,7 +6,7 @@ using System.Web;
 
 public class YunpianSMSService : ISMSService {
     public void SendByPhone(string phone,string strContext){
-        // 设置为您的apikey(https://www.yunpian.com)可查
+        // 设置为您的apikey(https://www.yunpian.com)
         string apikey = "";
         // 发送的手机号
         string mobile = phone;
