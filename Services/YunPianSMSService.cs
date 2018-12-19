@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using HtmlAgilityPackSMS.Interfaces;
+using HtmlAgilityPackSMS.Managers;
 
 namespace HtmlAgilityPackSMS.Services
 {
@@ -17,8 +18,7 @@ namespace HtmlAgilityPackSMS.Services
         public void SendByPhone(string phone, string strContext)
         {
             // 设置为您的apikey(https://www.yunpian.com)
-#warning todo inject
-            string apikey = "";
+            string apikey = ConfigManager.YunpianApikey;
             // 发送的手机号
             string mobile = phone;
             // 发送模板内容

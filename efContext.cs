@@ -1,4 +1,5 @@
 ﻿using System;
+using HtmlAgilityPackSMS.Managers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -19,8 +20,7 @@ namespace HtmlAgilityPackSMS
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("Server=localhost;Port=3307;Database=ef;User=root;Password=wo113661;");
+                optionsBuilder.UseMySql(ConfigManager.DbConnectionString);
             }
         }
 
