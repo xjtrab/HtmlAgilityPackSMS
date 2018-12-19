@@ -29,5 +29,6 @@ namespace HtmlAgilityPackSMS
 
         public DbSet<Rent> Rents { get; set; }
         public DbSet<SMSRawData> SMSRawDatas{get;set;}
+        public DbSet<SendHandListStatus> SendHandListStatuss{get;set;}
     }
 }
