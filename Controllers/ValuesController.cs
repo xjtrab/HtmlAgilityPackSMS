@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HtmlAgilityPackSMS.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HtmlAgilityPackSMS.Controllers
@@ -10,11 +11,16 @@ namespace HtmlAgilityPackSMS.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IDbStorage storage = null;
+        public ValuesController(IDbStorage storage){
+            this.storage = storage;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+             
+            return new string[] { "value1", "value2: + " + (storage.GetHandListStatusLastest() == null ? 1:0) };
         }
 
         // GET api/values/5

@@ -9,11 +9,13 @@ namespace HtmlAgilityPackSMS
     {
         public efContext()
         {
+           
         }
 
         public efContext(DbContextOptions<efContext> options)
             : base(options)
         {
+           
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,7 +27,9 @@ namespace HtmlAgilityPackSMS
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {}
+        {
+
+        }
 
         public DbSet<Rent> Rents { get; set; }
         public DbSet<SMSRawData> SMSRawDatas{get;set;}
