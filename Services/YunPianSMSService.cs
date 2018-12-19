@@ -43,7 +43,8 @@ namespace HtmlAgilityPackSMS.Services
             byte[] dataArray = Encoding.UTF8.GetBytes(postDataStr);
             SMSRawData rawData = new SMSRawData
             {
-                Request = postDataStr
+                Request = postDataStr,
+                SendTime = DateTime.Now
             };
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
@@ -61,7 +62,7 @@ namespace HtmlAgilityPackSMS.Services
                     new StreamReader(response.GetResponseStream(), Encoding.UTF8);
                 String res = reader.ReadToEnd();
                 rawData.Response = res;
-                storage.SaveSMSRawData(rawData);
+                
                 reader.Close();
                 Console.Write("\nResponse Content:\n" + res + "\n");
             }
@@ -75,7 +76,10 @@ namespace HtmlAgilityPackSMS.Services
                 String res = reader.ReadToEnd();
                 reader.Close();
                 Console.Write("\nResponse Content:\n" + res + "\n");
+                rawData.Response =  e.Message;
+                storage.SaveSMSRawData(rawData);
             }
+            
         }
     }
 }
