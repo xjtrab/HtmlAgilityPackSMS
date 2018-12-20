@@ -18,4 +18,4 @@ WORKDIR /app
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "HtmlAgilityPackSMS.dll"]
 ENV Development=Development
-ENV DbConnectionString=Server=35.236.112.199;Port=3307;Database=ef;User=root;Password=wo113661;
+ENV DbConnectionString=Server=localhost;Port=3307;Database=ef;User=root;Password=wo113661;
