@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using HtmlAgilityPackSMS.DataAccess;
 using HtmlAgilityPackSMS.Interfaces;
+using HtmlAgilityPackSMS.Managers;
 using HtmlAgilityPackSMS.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,12 @@ namespace HtmlAgilityPackSMS
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Console.WriteLine(ConfigManager.Env);
+            Console.WriteLine(ConfigManager.DbConnectionString);
+            using (var context = new efContext())
+            {
+                context.Database.Migrate();
+            }
         }
 
         public IConfiguration Configuration { get; }
