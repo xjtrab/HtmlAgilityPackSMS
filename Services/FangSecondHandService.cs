@@ -23,7 +23,7 @@ namespace HtmlAgilityPackSMS.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                await Task.Delay(1000 * 30);
+                
                 var html = @"http://www.czcfang.com/house/index?sug=cm:4062";
                 HtmlWeb web = new HtmlWeb();
                 var htmlDoc = web.Load(html);
@@ -71,6 +71,7 @@ namespace HtmlAgilityPackSMS.Services
                         }
                     }
                 }
+                await Task.Delay(1000 * 60 * 30);
             }
         }
     }
