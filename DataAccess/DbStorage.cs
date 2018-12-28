@@ -38,5 +38,26 @@ namespace HtmlAgilityPackSMS.DataAccess
                 return db.SaveChanges() > 0;
             }
         }
+
+        #region Community
+        public Community GetCommunityLastest()
+        {
+            Community entity;
+            using (var db = new efContext())
+            {
+                entity = db.Communitys.OrderByDescending(l => l.Id).FirstOrDefault();
+            }
+            return entity;
+        }
+
+        public bool SaveCommunity(Community entity)
+        {
+            using (var db = new efContext())
+            {
+                db.Communitys.Add(entity);
+                return db.SaveChanges() > 0;
+            }
+        }
+        #endregion
     }
 }
