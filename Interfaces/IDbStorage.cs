@@ -7,5 +7,7 @@ namespace HtmlAgilityPackSMS.Interfaces
         void SaveSMSRawData(SMSRawData data);
         SendHandListStatus GetHandListStatusLastest();
         bool SaveHandListStatus(SendHandListStatus status);
+        Community GetCommunityLastest();
+        bool SaveCommunity(Community entity);
     }
 }

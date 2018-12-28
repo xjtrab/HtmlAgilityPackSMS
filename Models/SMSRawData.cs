@@ -1,11 +1,10 @@
 using System;
 
-public class SMSRawData
+public class SMSRawData : BaseEntity
 {
-    public int Id{get;set;}
-    public string Request{get;set;}
-    public string Response{get;set;}
-    public int ResponseCode{get;set;}
-    public DateTime SendTime{get;set;}
+    public string Request { get; set; }
+    public string Response { get; set; }
+    public int ResponseCode { get; set; }
+    public DateTime SendTime { get; set; }
 
 }
