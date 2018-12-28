@@ -31,9 +31,9 @@ public class CommunityService : HostedService
             Community community = new Community();
             community.Name = nodehousetit.InnerText;
             community.Price = decimal.Parse(nodeprice.InnerText);
-            community.RentCount = int.Parse(nodeRentHouseCount.InnerText.Trim('?'));
-            community.SellCount = int.Parse(nodeSellHouseCount.InnerText.Trim('?'));
-            community.SeeCountRecentThirtyDays = int.Parse(nodeSeeCountRecentThirtyDays.InnerText.Trim('?'));
+            community.RentCount = int.Parse(nodeRentHouseCount.InnerText.Trim('\u5957'));
+            community.SellCount = int.Parse(nodeSellHouseCount.InnerText.Trim('\u5957'));
+            community.SeeCountRecentThirtyDays = int.Parse(nodeSeeCountRecentThirtyDays.InnerText.Trim('\u6B21'));
             community.CreateTime = DateTime.Now;
 
             Community dbCommunity = dbStorage.GetCommunityLastest();
