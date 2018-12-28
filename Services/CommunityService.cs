@@ -31,11 +31,11 @@ public class CommunityService : HostedService
             Community community = new Community();
             community.Name = nodehousetit.InnerText;
             community.Price = decimal.Parse(nodeprice.InnerText);
-            community.RentCount = int.Parse(nodeRentHouseCount.InnerText.Trim('套'));
-            community.SellCount = int.Parse(nodeSellHouseCount.InnerText.Trim('套'));
-            community.SeeCountRecentThirtyDays = int.Parse(nodeSeeCountRecentThirtyDays.InnerText.Trim('次'));
+            community.RentCount = int.Parse(nodeRentHouseCount.InnerText.Trim('?'));
+            community.SellCount = int.Parse(nodeSellHouseCount.InnerText.Trim('?'));
+            community.SeeCountRecentThirtyDays = int.Parse(nodeSeeCountRecentThirtyDays.InnerText.Trim('?'));
             community.CreateTime = DateTime.Now;
-            
+
             Community dbCommunity = dbStorage.GetCommunityLastest();
             if (dbCommunity != null && dbCommunity.Price.Equals(community.Price))
             {
