@@ -54,7 +54,7 @@ namespace HtmlAgilityPackSMS.Services
                             dbStorage.SaveHandListStatus(new SendHandListStatus
                             {
                                 Total = totalCount,
-                                CreateTime = DateTime.Now
+                                CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
                             });
                         }
                         else
@@ -65,7 +65,7 @@ namespace HtmlAgilityPackSMS.Services
                                 dbStorage.SaveHandListStatus(new SendHandListStatus
                                 {
                                     Total = totalCount,
-                                    CreateTime = DateTime.Now
+                                    CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
                                 });
                             }
                         }
