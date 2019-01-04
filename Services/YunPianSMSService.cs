@@ -44,7 +44,7 @@ namespace HtmlAgilityPackSMS.Services
             SMSRawData rawData = new SMSRawData
             {
                 Request = postDataStr,
-                SendTime = DateTime.Now
+                CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
             };
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
