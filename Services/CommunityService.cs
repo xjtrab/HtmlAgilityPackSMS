@@ -34,10 +34,11 @@ public class CommunityService : HostedService
             community.RentCount = int.Parse(nodeRentHouseCount.InnerText.Trim('\u5957'));
             community.SellCount = int.Parse(nodeSellHouseCount.InnerText.Trim('\u5957'));
             community.SeeCountRecentThirtyDays = int.Parse(nodeSeeCountRecentThirtyDays.InnerText.Trim('\u6B21'));
-            community.CreateTime = DateTime.Now;
+            community.CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             Community dbCommunity = dbStorage.GetCommunityLastest();
-            if (dbCommunity != null && !decimal.Round(dbCommunity.Price,0).Equals(community.Price))
+            if (dbCommunity != null && ( !decimal.Round(dbCommunity.Price,0).Equals(community.Price)
+            ||  !decimal.Round(dbCommunity.SellCount,0).Equals(community.SellCount)))
             {
                 sMSService.SendByPhone("13961570305", $"price: {community.Price} sellCount {community.SellCount}");
             }

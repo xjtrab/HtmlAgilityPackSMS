@@ -8,6 +8,6 @@ public class Community : BaseEntity, ITimeTrack
     public int RentCount { get; set; }
     public int SellCount { get; set; }
     public int SeeCountRecentThirtyDays { get; set; }
-    public DateTime CreateTime {get; set; }
-    public DateTime ModifiedTime {get; set; }
+    public long CreateTime {get; set; }
+    public long ModifiedTime {get; set; }
 }
