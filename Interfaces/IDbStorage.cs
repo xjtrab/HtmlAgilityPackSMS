@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace HtmlAgilityPackSMS.Interfaces
+﻿namespace HtmlAgilityPackSMS.Interfaces
 {
     public interface IDbStorage
     {

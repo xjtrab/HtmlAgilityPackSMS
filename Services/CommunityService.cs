@@ -37,8 +37,8 @@ public class CommunityService : HostedService
             community.CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             Community dbCommunity = dbStorage.GetCommunityLastest();
-            if (dbCommunity != null && ( !decimal.Round(dbCommunity.Price,0).Equals(community.Price)
-            ||  !decimal.Round(dbCommunity.SellCount,0).Equals(community.SellCount)))
+            if (dbCommunity != null && (!decimal.Round(dbCommunity.Price, 0).Equals(community.Price)
+            || !decimal.Round(dbCommunity.SellCount, 0).Equals(community.SellCount)))
             {
                 sMSService.SendByPhone("13961570305", $"price: {community.Price} sellCount {community.SellCount}");
             }
