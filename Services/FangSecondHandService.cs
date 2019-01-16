@@ -23,43 +23,22 @@ namespace HtmlAgilityPackSMS.Services
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                
-                var html = @"http://www.czcfang.com/house/index?sug=cm:4062";
-                HtmlWeb web = new HtmlWeb();
-                var htmlDoc = web.Load(html);
-                var node = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[5]/div[1]/div/ul/li[3]/span");
-                // var test = htmlDoc.DocumentNode.QuerySelectorAll(".houseInfo");
-                // foreach (var item in test)
-                // {
-                //     var price = item.QuerySelector(".area").QuerySelector(".gray").InnerText.Replace(Environment.NewLine, "").Trim();
-                //     var totalPrice = Regex.Replace(item.QuerySelector(".area").QuerySelector(".orange").InnerText.Replace(Environment.NewLine, "").Trim(), @"\s", "");
-                //     var mianji = Regex.Replace(item.QuerySelector(".horizontal").QuerySelector(".horizon-detail").InnerText.Replace(Environment.NewLine, "").Trim(), @"\s", "").Replace("&nbsp;&nbsp;", " ");
 
-                //     var href = item.QuerySelector("a").Attributes["href"];
-                //     var id = href.Value.Split("/")[3];
-                //     Console.WriteLine("总价 : " + totalPrice + " 面积:" + mianji + " 单价:" + price + " id:" + id);
-                //     sMSService.SendByPhone("13961570305", "总价 : " + totalPrice + " 面积:" + mianji + " id:" + id);
-                //     return;
-                // }
-                if (node != null)
+                try
                 {
-                    int totalCount = 0;
-                    if (int.TryParse(node.InnerText, out totalCount))
+                    var html = @"http://www.czcfang.com/house/index?sug=cm:4062";
+                    HtmlWeb web = new HtmlWeb();
+                    var htmlDoc = web.Load(html);
+                    var node = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[5]/div[1]/div/ul/li[3]/span");
+
+                    if (node != null)
                     {
-                        //check db if exist same value record
-                        SendHandListStatus status = dbStorage.GetHandListStatusLastest();
-                        if (status == null)
+                        int totalCount = 0;
+                        if (int.TryParse(node.InnerText, out totalCount))
                         {
-                            sMSService.SendByPhone("13961570305", "总套数: " + totalCount);
-                            dbStorage.SaveHandListStatus(new SendHandListStatus
-                            {
-                                Total = totalCount,
-                                CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
-                            });
-                        }
-                        else
-                        {
-                            if (status.Total != totalCount)
+                            //check db if exist same value record
+                            SendHandListStatus status = dbStorage.GetHandListStatusLastest();
+                            if (status == null)
                             {
                                 sMSService.SendByPhone("13961570305", "总套数: " + totalCount);
                                 dbStorage.SaveHandListStatus(new SendHandListStatus
@@ -68,8 +47,24 @@ namespace HtmlAgilityPackSMS.Services
                                     CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
                                 });
                             }
+                            else
+                            {
+                                if (status.Total != totalCount)
+                                {
+                                    sMSService.SendByPhone("13961570305", "总套数: " + totalCount);
+                                    dbStorage.SaveHandListStatus(new SendHandListStatus
+                                    {
+                                        Total = totalCount,
+                                        CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
+                                    });
+                                }
+                            }
                         }
                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
                 await Task.Delay(1000 * 60 * 30);
             }
