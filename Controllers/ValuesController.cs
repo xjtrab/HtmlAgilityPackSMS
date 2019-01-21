@@ -12,15 +12,16 @@ namespace HtmlAgilityPackSMS.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly IDbStorage storage = null;
-        public ValuesController(IDbStorage storage){
+        public ValuesController(IDbStorage storage)
+        {
             this.storage = storage;
         }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-             
-            return new string[] { "value1", "value2: + " + (storage.GetHandListStatusLastest() == null ? 1:0) };
+            
+            return new string[] { "value1", "value2: + " + (storage.GetHandListStatusLastest() == null ? 1 : 0) };
         }
 
         // GET api/values/5
