@@ -31,7 +31,7 @@ public class EmailService : IEmailService
 
             client.Send(message);
             client.Disconnect(true);
-            //test DefinitionVersion 2
+            //test DefinitionVersion 3
         }
         return await Task.FromResult(true);
     }
