@@ -43,6 +43,7 @@ namespace HtmlAgilityPackSMS
             services.AddSingleton<ISMSService, YunpianSMSService>();
             services.AddSingleton<IHostedService, FangSecondHandService>();
             services.AddSingleton<IHostedService, CommunityService>();
+            services.AddSingleton<IEmailService, EmailService>();
             
                 
         }

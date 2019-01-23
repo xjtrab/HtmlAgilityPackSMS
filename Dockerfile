@@ -19,3 +19,5 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "HtmlAgilityPackSMS.dll"]
 ENV Development=Development
 ENV DbConnectionString=Server=localhost;Port=3307;Database=ef;User=root;Password=wo113661;
+ENV AdminEmailAccount=xjtrab
+ENV AdminEmailPassword=test

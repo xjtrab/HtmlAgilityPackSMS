@@ -20,6 +20,8 @@ namespace HtmlAgilityPackSMS.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            IEmailService emailService = new EmailService();
+            emailService.SendEmail("subject","test");
             
             return new string[] { "value1", "value2: + " + (storage.GetHandListStatusLastest() == null ? 1 : 0) };
         }
