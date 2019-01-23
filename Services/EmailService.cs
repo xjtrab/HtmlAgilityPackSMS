@@ -2,9 +2,11 @@
 using System.Threading.Tasks;
 using MimeKit;
 using MailKit.Net.Smtp;
+using HtmlAgilityPackSMS.Managers;
 
 public class EmailService : IEmailService
 {
+    
     public async Task<bool> SendEmail(string subject ,string body)
     {
         var message = new MimeMessage();
@@ -27,7 +29,7 @@ public class EmailService : IEmailService
             client.AuthenticationMechanisms.Remove("XOAUTH2");
 
             // Note: only needed if the SMTP server requires authentication
-            client.Authenticate("xjtrab", "");
+            client.Authenticate(ConfigManager.AdminEmailAccount, ConfigManager.AdminEmailPassword);
 
             client.Send(message);
             client.Disconnect(true);

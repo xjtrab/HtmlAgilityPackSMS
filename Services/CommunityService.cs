@@ -18,10 +18,6 @@ public class CommunityService : HostedService
     {
         while (!cancellationToken.IsCancellationRequested)
         {
-
-
-
-            
             try
             {
                 var html = @"https://wx.5i5j.com/xiaoqu/348244.html";
