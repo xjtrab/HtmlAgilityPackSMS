@@ -27,6 +27,9 @@ namespace HtmlAgilityPackSMS
             Configuration = configuration;
             Console.WriteLine(ConfigManager.Env);
             Console.WriteLine(ConfigManager.DbConnectionString);
+            Console.WriteLine(ConfigManager.YunpianApikey);
+            Console.WriteLine(ConfigManager.AdminEmailAccount);
+            Console.WriteLine(ConfigManager.AdminEmailPassword);
             using (var context = new efContext())
             {
                 context.Database.Migrate();
@@ -44,8 +47,6 @@ namespace HtmlAgilityPackSMS
             services.AddSingleton<IHostedService, FangSecondHandService>();
             services.AddSingleton<IHostedService, CommunityService>();
             services.AddSingleton<IEmailService, EmailService>();
-            
-                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
