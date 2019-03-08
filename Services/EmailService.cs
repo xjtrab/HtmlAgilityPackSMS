@@ -7,6 +7,7 @@ using HtmlAgilityPackSMS.Managers;
 public class EmailService : IEmailService
 {
     
+    
     public async Task<bool> SendEmail(string subject ,string body)
     {
         var message = new MimeMessage();
