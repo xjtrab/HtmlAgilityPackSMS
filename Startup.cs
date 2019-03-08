@@ -63,6 +63,7 @@ namespace HtmlAgilityPackSMS
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
         }
     }
 }
