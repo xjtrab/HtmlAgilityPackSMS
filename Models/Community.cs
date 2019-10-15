@@ -1,5 +1,6 @@
 using System;
 
+
 public class Community : BaseEntity, ITimeTrack
 {
     public string Name { get; set; }

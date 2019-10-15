@@ -35,5 +35,6 @@ namespace HtmlAgilityPackSMS
         public DbSet<SMSRawData> SMSRawDatas{get;set;}
         public DbSet<SendHandListStatus> SendHandListStatuss{get;set;}
         public DbSet<Community> Communitys { get; set; }
+        public DbSet<GlobalStatus> GlobalStatuses{get;set;}
     }
 }
