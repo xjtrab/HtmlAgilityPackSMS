@@ -2,3 +2,4 @@ obj
 bin
 Properties
 appsettings.Development.json
+.vscode/settings.json
