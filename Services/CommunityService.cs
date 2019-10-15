@@ -24,6 +24,7 @@ public class CommunityService : HostedService
                 var html = @"https://wx.5i5j.com/xiaoqu/o3/";
 
                 HtmlWeb web = new HtmlWeb();
+                web.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0";
                 var htmlDoc = web.Load(html);
                 Community community =  new Community ();
                 // var nodehousetit = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[5]/div[1]/div[1]/div/span");
