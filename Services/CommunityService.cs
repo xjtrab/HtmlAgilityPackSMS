@@ -40,8 +40,10 @@ public class CommunityService : HostedService
                     community.SellingCount =  int.Parse(item.QuerySelector("div > div > a > p.num > span").InnerText
                         .Trim('\r').Trim('\n').Trim());
                     int countIndex = item.QuerySelector("div.listCon > div > p.xqzs.clear > span").InnerText.IndexOf("\u5957");
+                    if(countIndex != -1)
                     community.SelledOutLastMonth = int.Parse(item.QuerySelector("div.listCon > div > p.xqzs.clear > span").InnerText.Substring(10,countIndex - 10 - 6));    
                     int rentCountIndex = item.QuerySelector("div > p.xqzs.clear > span:nth-child(4) > a").InnerText.IndexOf("\u5957");
+                    if(rentCountIndex !=-1)
                     community.RentingCount = int.Parse(item.QuerySelector("div > p.xqzs.clear > span:nth-child(4) > a").InnerText.Substring(0,rentCountIndex - 0 - 6));    
 
                     dbStorage.SaveCommunity(community);
