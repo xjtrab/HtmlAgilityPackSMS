@@ -2,14 +2,16 @@
 using HtmlAgilityPackSMS;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HtmlAgilityPackSMS.Migrations
 {
     [DbContext(typeof(efContext))]
-    partial class efContextModelSnapshot : ModelSnapshot
+    [Migration("20191015020949_AddTableGlobalStatus")]
+    partial class AddTableGlobalStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,13 +33,11 @@ namespace HtmlAgilityPackSMS.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("RentingCount");
+                    b.Property<int>("RentCount");
 
                     b.Property<int>("SeeCountRecentThirtyDays");
 
-                    b.Property<int>("SelledOutLastMonth");
-
-                    b.Property<int>("SellingCount");
+                    b.Property<int>("SellCount");
 
                     b.Property<string>("ThridPartyId");
 

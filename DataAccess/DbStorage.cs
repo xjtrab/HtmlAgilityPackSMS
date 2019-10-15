@@ -58,6 +58,15 @@ namespace HtmlAgilityPackSMS.DataAccess
                 return db.SaveChanges() > 0;
             }
         }
+
+        public bool SaveGlobalStatus(GlobalStatus status)
+        {
+            using (var db = new efContext())
+            {
+                db.GlobalStatuses.Add(status);
+                return db.SaveChanges() > 0;
+            }
+        }
         #endregion
     }
 }
