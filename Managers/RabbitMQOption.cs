@@ -1,7 +1,6 @@
 namespace HtmlAgilityPackSMS.Managers
 {
-
-    public class RabitMQOption
+    public class RabbitMQOption
     {
         public string Root { get; set; }
         public int Port { get; set; }
