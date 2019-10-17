@@ -28,7 +28,7 @@ namespace HtmlAgilityPackSMS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            
         }
 
         public DbSet<Rent> Rents { get; set; }
@@ -36,5 +36,6 @@ namespace HtmlAgilityPackSMS
         public DbSet<SendHandListStatus> SendHandListStatuss{get;set;}
         public DbSet<Community> Communitys { get; set; }
         public DbSet<GlobalStatus> GlobalStatuses{get;set;}
+        public DbSet<AcquisitionUnit> AcquisitionUnit{get;set;}
     }
 }

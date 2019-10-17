@@ -43,8 +43,7 @@ namespace HtmlAgilityPackSMS.Services
             byte[] dataArray = Encoding.UTF8.GetBytes(postDataStr);
             SMSRawData rawData = new SMSRawData
             {
-                Request = postDataStr,
-                CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
+                Request = postDataStr
             };
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);

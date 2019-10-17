@@ -43,8 +43,7 @@ namespace HtmlAgilityPackSMS.Services
                                 sMSService.SendByPhone("13961570305", "总套数: " + totalCount);
                                 dbStorage.SaveHandListStatus(new SendHandListStatus
                                 {
-                                    Total = totalCount,
-                                    CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
+                                    Total = totalCount
                                 });
                             }
                             else
@@ -54,8 +53,7 @@ namespace HtmlAgilityPackSMS.Services
                                     sMSService.SendByPhone("13961570305", "总套数: " + totalCount);
                                     dbStorage.SaveHandListStatus(new SendHandListStatus
                                     {
-                                        Total = totalCount,
-                                        CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()
+                                        Total = totalCount
                                     });
                                 }
                             }

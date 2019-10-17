@@ -23,14 +23,16 @@ public class CommunityService : HostedService
             try
             {
 
+                AcquisitionUnit unit = new  AcquisitionUnit();
+                unit.Result = EnumAcquisitionUnit.SUCCESS;
+                dbStorage.SaveAcquisitionUnit(unit);
                 List<string> list = new List<string>{
-                   @"https://wx.5i5j.com/xiaoqu/o3/",
-                @"https://wx.5i5j.com/xiaoqu/o3n2/"};
+                    @"https://wx.5i5j.com/xiaoqu/o3/",
+                    @"https://wx.5i5j.com/xiaoqu/o3n2/"};
                 list.ForEach(item =>
                 {
-                    Process(item);
+                    Process(item,unit);
                 });
-
             }
             catch (Exception e)
             {
@@ -40,7 +42,7 @@ public class CommunityService : HostedService
         }
     }
 
-    private void Process(string html)
+    private void Process(string html,AcquisitionUnit unit)
     {
         HtmlWeb web = new HtmlWeb();
         web.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0";
@@ -52,6 +54,7 @@ public class CommunityService : HostedService
             community = new Community();
             community.Name = item.QuerySelector("h3 > a").InnerText;
             community.Price = int.Parse(item.QuerySelector("div > div > p.redC > strong").InnerText);
+            
             var SellingCountStr = item.QuerySelector("div > div > a > p.num > span").InnerText;
             if(SellingCountStr.Contains('\r')){
                SellingCountStr = SellingCountStr.Trim('\r');
@@ -68,7 +71,7 @@ public class CommunityService : HostedService
             int rentCountIndex = item.QuerySelector("div > p.xqzs.clear > span:nth-child(4) > a").InnerText.IndexOf("\u5957");
             if (rentCountIndex != -1)
                 community.RentingCount = int.Parse(item.QuerySelector("div > p.xqzs.clear > span:nth-child(4) > a").InnerText.Substring(0, rentCountIndex - 0 - 6));
-
+            community.UnitId = unit.Id;
             dbStorage.SaveCommunity(community);
         }
     }

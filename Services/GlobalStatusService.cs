@@ -33,7 +33,7 @@ public class GlobalStatusService : HostedService
                 GlobalStatus status = new  GlobalStatus();
                 status.StatusFrom = "5i5j";
                 status.TotalCommunityCount  = int.Parse(nodehousetit.InnerText);
-                status.CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+                // status.CreateTime = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
                 dbStorage.SaveGlobalStatus(status);
             }
             catch (Exception e)

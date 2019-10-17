@@ -1,2 +1,0 @@
-select Name,SelledOutLastMonth,SellingCount,Price,SelledOutLastMonth/SellingCount from Communitys 
-ORDER by SelledOutLastMonth/SellingCount desc
