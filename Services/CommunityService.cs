@@ -52,8 +52,16 @@ public class CommunityService : HostedService
             community = new Community();
             community.Name = item.QuerySelector("h3 > a").InnerText;
             community.Price = int.Parse(item.QuerySelector("div > div > p.redC > strong").InnerText);
-            community.SellingCount = int.Parse(item.QuerySelector("div > div > a > p.num > span").InnerText
-                .Trim('\r').Trim('\n').Trim());
+            var SellingCountStr = item.QuerySelector("div > div > a > p.num > span").InnerText;
+            if(SellingCountStr.Contains('\r')){
+               SellingCountStr = SellingCountStr.Trim('\r');
+            }
+            if(SellingCountStr.Contains('\n')){
+               SellingCountStr = SellingCountStr.Trim('\n');
+            }
+            if( int.TryParse(SellingCountStr.Trim(),out int tempSellingCount)){
+                community.SellingCount = tempSellingCount;
+            }
             int countIndex = item.QuerySelector("div.listCon > div > p.xqzs.clear > span").InnerText.IndexOf("\u5957");
             if (countIndex != -1)
                 community.SelledOutLastMonth = int.Parse(item.QuerySelector("div.listCon > div > p.xqzs.clear > span").InnerText.Substring(10, countIndex - 10 - 6));
