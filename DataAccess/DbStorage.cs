@@ -67,6 +67,15 @@ namespace HtmlAgilityPackSMS.DataAccess
                 return db.SaveChanges() > 0;
             }
         }
+
+        public bool SaveAcquisitionUnit(AcquisitionUnit entity)
+        {
+            using (var db = new efContext())
+            {
+                db.AcquisitionUnit.Add(entity);
+                return db.SaveChanges() > 0;
+            }
+        }
         #endregion
     }
 }

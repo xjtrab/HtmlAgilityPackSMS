@@ -7,6 +7,7 @@
         bool SaveHandListStatus(SendHandListStatus status);
         Community GetCommunityLastest();
         bool SaveCommunity(Community entity);
+        bool SaveAcquisitionUnit(AcquisitionUnit entity);
         bool SaveGlobalStatus(GlobalStatus status);
     }
 }
