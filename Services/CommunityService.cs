@@ -45,6 +45,7 @@ public class CommunityService : HostedService
     private void Process(string html,AcquisitionUnit unit)
     {
         HtmlWeb web = new HtmlWeb();
+        web.CaptureRedirect = false;
         web.UserAgent = "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0";
         var htmlDoc = web.Load(html);
         Community community = new Community();
